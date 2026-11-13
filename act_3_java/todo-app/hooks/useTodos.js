@@ -1,3 +1,4 @@
+// Actividad realizada por Francisco Manuel Alarcon Rodas
 //HOOK UNA FUNCIÓN QUE REGRESA OTRAS FUNCIONES.
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";

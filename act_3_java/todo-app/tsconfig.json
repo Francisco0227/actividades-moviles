@@ -7,7 +7,9 @@
       "@/assets/*": ["./assets/*"],
       "@/data/*": ["./data/*"],
       "@/components/*": ["./components/*"],
-      "@/hooks/*": ["./hooks/*"]
+      "@/hooks/*": ["./hooks/*"],
+      "@/constants/*": ["./constants/*"],
+      "@/context/*": ["./context/*"]
     }
   },
   "include": [

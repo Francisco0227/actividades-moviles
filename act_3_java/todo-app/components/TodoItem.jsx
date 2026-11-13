@@ -1,9 +1,13 @@
+// Actividad realizada por Francisco Manuel Alarcon Rodas
+import { ThemeContext } from "@/context/ThemeContext";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import React from "react";
+import React, { useContext } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 export const TodoItem = React.memo(
   ({ item, onToggle, onRemove, onDetails }) => {
+    const { theme } = useContext(ThemeContext);
+    const styles = createStyles(theme);
     return (
       <View style={styles.itemRow}>
         <Text
@@ -14,36 +18,38 @@ export const TodoItem = React.memo(
           {item.title}
         </Text>
         <Pressable onPress={() => onRemove(item.id)}>
-          <MaterialCommunityIcons name="delete" size={24} color="red" />
+          <MaterialCommunityIcons name="delete" size={24} style={styles.icon} />
         </Pressable>
       </View>
     );
   },
 );
 
-const styles = StyleSheet.create({
-  itemRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: 4,
-    padding: 10,
-    borderBottomColor: "black",
-    borderBottomWidth: 1,
-    width: "100%",
-    maxWidth: 1024,
-    marginHorizontal: "auto",
-  },
-  todoItem: {
-    color: "white",
-    flex: 1,
-    fontSize: 18,
-  },
-  completedText: {
-    color: "gray",
-    textDecorationLine: "line-through",
-  },
-  icon: {
-    color: "red",
-  },
-});
+function createStyles(theme) {
+  return StyleSheet.create({
+    itemRow: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      gap: 4,
+      padding: 10,
+      borderBottomColor: "black",
+      borderBottomWidth: 1,
+      width: "100%",
+      maxWidth: 1024,
+      marginHorizontal: "auto",
+    },
+    todoItem: {
+      color: theme.text,
+      flex: 1,
+      fontSize: 18,
+    },
+    completedText: {
+      color: "gray",
+      textDecorationLine: "line-through",
+    },
+    icon: {
+      color: theme.icon,
+    },
+  });
+}
